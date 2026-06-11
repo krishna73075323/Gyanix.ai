@@ -18,6 +18,16 @@ export default defineConfig({
       },
     },
   },
+  build: {
+    rollupOptions: {
+      input: {
+        main: resolve(__dirname, 'index.html'),
+        login: resolve(__dirname, 'login.html'),
+        report: resolve(__dirname, 'report.html'),
+        dashboard: resolve(__dirname, 'dashboard.html'),
+      },
+    },
+  },
   plugins: [
     {
       name: 'html-ext-fallback',
