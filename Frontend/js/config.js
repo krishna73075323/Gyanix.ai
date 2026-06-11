@@ -3,4 +3,4 @@
 
 window.API_BASE = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1'
   ? ''
-  : 'https://your-backend-app.azurewebsites.net'; // <-- REPLACE THIS WITH YOUR LIVE BACKEND URL IN PRODUCTION
+  : 'https://gyanix-ai-backend.onrender.com'; // <-- REPLACE THIS WITH YOUR LIVE BACKEND URL IN PRODUCTION
