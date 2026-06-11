@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>File a Report — Gyanix AI</title>
+  <meta name="description" content="Anonymously report ragging, harassment or corruption at your college. Gyanix AI keeps your identity fully protected." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/report.css" />
+</head>
+<body>
+
+  <!-- ===== NAVBAR ===== -->
+  <nav class="navbar scrolled" id="navbar">
+    <div class="nav-container">
+      <a href="index.html" class="nav-logo">
+        <div class="logo-icon">
+          <svg width="28" height="28" viewBox="0 0 28 28" fill="none">
+            <circle cx="14" cy="14" r="13" stroke="url(#logoGrad2)" stroke-width="2"/>
+            <path d="M8 14l4 4 8-8" stroke="url(#logoGrad2)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+            <defs>
+              <linearGradient id="logoGrad2" x1="0" y1="0" x2="28" y2="28" gradientUnits="userSpaceOnUse">
+                <stop stop-color="#a78bfa"/><stop offset="1" stop-color="#06b6d4"/>
+              </linearGradient>
+            </defs>
+          </svg>
+        </div>
+        <span class="logo-text">Gyanix<span class="logo-ai">AI</span></span>
+      </a>
+      <div class="nav-actions">
+        <a href="index.html" class="btn-ghost">← Back to Home</a>
+        <a href="dashboard.html" class="btn-primary">Admin Dashboard</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ===== BACKGROUND EFFECTS ===== -->
+  <div class="report-bg">
+    <div class="report-orb report-orb-1"></div>
+    <div class="report-orb report-orb-2"></div>
+    <div class="bg-grid-subtle"></div>
+  </div>
+
+  <!-- ===== MAIN CONTENT ===== -->
+  <main class="report-main">
+
+    <!-- Page Header -->
+    <div class="report-header">
+      <div class="privacy-banner">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#10b981" stroke-width="2.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        <span>Your identity is 100% anonymous. No login required. No IP stored.</span>
+      </div>
+      <h1 class="report-page-title">File an Anonymous Report</h1>
+      <p class="report-page-sub">Apni baat kaho — bina kisi dar ke. AI turant analyze karega.</p>
+    </div>
+
+    <!-- ===== MULTI-STEP FORM WRAPPER ===== -->
+    <div class="form-wrapper" id="form-wrapper">
+
+      <!-- STEP INDICATOR -->
+      <div class="step-indicator">
+        <div class="step-item active" id="si-1">
+          <div class="step-bubble">1</div>
+          <span>Issue Type</span>
+        </div>
+        <div class="step-line"></div>
+        <div class="step-item" id="si-2">
+          <div class="step-bubble">2</div>
+          <span>Your Story</span>
+        </div>
+        <div class="step-line"></div>
+        <div class="step-item" id="si-3">
+          <div class="step-bubble">3</div>
+          <span>Review</span>
+        </div>
+      </div>
+
+      <!-- ===================== STEP 1: Issue Type ===================== -->
+      <div class="form-step active" id="step-1">
+        <div class="step-header">
+          <h2>What are you reporting?</h2>
+          <p>Issue ka type select karo. Yeh admin ko category assign karne mein help karega.</p>
+        </div>
+
+        <!-- Language Selector -->
+        <div class="lang-selector-wrap">
+          <label class="field-label">🌐 Language / Bhasha</label>
+          <div class="lang-options">
+            <button class="lang-btn active" data-lang="en" id="lang-en">🇬🇧 English</button>
+            <button class="lang-btn" data-lang="hi" id="lang-hi">🇮🇳 हिंदी</button>
+            <button class="lang-btn" data-lang="ur" id="lang-ur">🇵🇰 اردو</button>
+          </div>
+        </div>
+
+        <!-- Issue Type Cards -->
+        <div class="issue-grid">
+          <div class="issue-card" data-type="ragging" id="issue-ragging" tabindex="0">
+            <div class="issue-icon" style="--ic:#f43f5e">
+              <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+            </div>
+            <h3 id="issue-title-ragging">Ragging</h3>
+            <p id="issue-desc-ragging">Physical or mental harassment by seniors</p>
+            <div class="issue-severity critical">Critical Priority</div>
+          </div>
+
+          <div class="issue-card" data-type="harassment" id="issue-harassment" tabindex="0">
+            <div class="issue-icon" style="--ic:#f59e0b">
+              <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+            </div>
+            <h3 id="issue-title-harassment">Harassment</h3>
+            <p id="issue-desc-harassment">Sexual, verbal or physical harassment</p>
+            <div class="issue-severity high">High Priority</div>
+          </div>
+
+          <div class="issue-card" data-type="corruption" id="issue-corruption" tabindex="0">
+            <div class="issue-icon" style="--ic:#8b5cf6">
+              <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+            </div>
+            <h3 id="issue-title-corruption">Corruption</h3>
+            <p id="issue-desc-corruption">Bribery, marks manipulation or fee fraud</p>
+            <div class="issue-severity medium">Medium Priority</div>
+          </div>
+
+          <div class="issue-card" data-type="academic" id="issue-academic" tabindex="0">
+            <div class="issue-icon" style="--ic:#06b6d4">
+              <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
+            </div>
+            <h3 id="issue-title-academic">Academic Misconduct</h3>
+            <p id="issue-desc-academic">Unfair exams, biased grading, plagiarism</p>
+            <div class="issue-severity medium">Medium Priority</div>
+          </div>
+
+          <div class="issue-card" data-type="discrimination" id="issue-discrimination" tabindex="0">
+            <div class="issue-icon" style="--ic:#10b981">
+              <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="4.93" y1="4.93" x2="19.07" y2="19.07"/></svg>
+            </div>
+            <h3 id="issue-title-discrimination">Discrimination</h3>
+            <p id="issue-desc-discrimination">Caste, religion, gender or regional bias</p>
+            <div class="issue-severity high">High Priority</div>
+          </div>
+
+          <div class="issue-card" data-type="other" id="issue-other" tabindex="0">
+            <div class="issue-icon" style="--ic:#a78bfa">
+              <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+            </div>
+            <h3 id="issue-title-other">Other Issue</h3>
+            <p id="issue-desc-other">Any other campus safety concern</p>
+            <div class="issue-severity low">Standard</div>
+          </div>
+        </div>
+
+        <div class="step-nav">
+          <span></span>
+          <button class="btn-next" id="next-1" disabled>
+            Next: Your Story
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg>
+          </button>
+        </div>
+      </div>
+
+      <!-- ===================== STEP 2: Description ===================== -->
+      <div class="form-step" id="step-2">
+        <div class="step-header">
+          <h2 id="step2-title">Describe what happened</h2>
+          <p id="step2-sub">Jitna detail mein bata sako — names, dates, location. Yeh sirf admin dekhega.</p>
+        </div>
+
+        <div class="field-group">
+          <label class="field-label" for="location-input" id="label-location">📍 Location (optional)</label>
+          <input
+            type="text"
+            id="location-input"
+            class="field-input"
+            placeholder="e.g. Hostel Block B, Chemistry Lab..."
+            maxlength="100"
+          />
+        </div>
+
+        <div class="field-group">
+          <label class="field-label" for="description-input" id="label-description">📝 Describe the incident</label>
+          <textarea
+            id="description-input"
+            class="field-textarea"
+            placeholder="Apni baat yahan likho... Kya hua, kab hua, kaun tha..."
+            maxlength="2000"
+            rows="8"
+          ></textarea>
+          <div class="char-counter">
+            <span id="char-count">0</span>/2000 characters
+            <span class="char-hint" id="char-hint">(minimum 50 characters)</span>
+          </div>
+        </div>
+
+        <div class="field-group">
+          <label class="field-label" id="label-when">🗓️ When did it happen? (optional)</label>
+          <input
+            type="date"
+            id="date-input"
+            class="field-input"
+          />
+        </div>
+
+        <!-- Urgency Toggle -->
+        <div class="urgency-wrap">
+          <label class="field-label" id="label-urgent">⚡ Is this an emergency?</label>
+          <div class="toggle-row">
+            <label class="toggle-switch">
+              <input type="checkbox" id="urgency-toggle" />
+              <span class="toggle-slider"></span>
+            </label>
+            <span class="toggle-label" id="label-urgent-desc">Yes, I need immediate help</span>
+          </div>
+        </div>
+
+        <div class="step-nav">
+          <button class="btn-back" id="back-2">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15 18 9 12 15 6"/></svg>
+            Back
+          </button>
+          <button class="btn-next" id="next-2" disabled>
+            Review Report
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg>
+          </button>
+        </div>
+      </div>
+
+      <!-- ===================== STEP 3: Review ===================== -->
+      <div class="form-step" id="step-3">
+        <div class="step-header">
+          <h2 id="step3-title">Review your report</h2>
+          <p id="step3-sub">Submit karne se pehle ek baar check karo. Submit karne ke baad tracking ID milega.</p>
+        </div>
+
+        <!-- Review Card -->
+        <div class="review-card glass-card">
+          <div class="review-row">
+            <span class="review-label">Issue Type</span>
+            <span class="review-value" id="review-type">—</span>
+          </div>
+          <div class="review-row">
+            <span class="review-label">Language</span>
+            <span class="review-value" id="review-lang">—</span>
+          </div>
+          <div class="review-row">
+            <span class="review-label">Location</span>
+            <span class="review-value" id="review-location">Not provided</span>
+          </div>
+          <div class="review-row">
+            <span class="review-label">Date</span>
+            <span class="review-value" id="review-date">Not provided</span>
+          </div>
+          <div class="review-row">
+            <span class="review-label">Emergency</span>
+            <span class="review-value" id="review-urgent">No</span>
+          </div>
+          <div class="review-divider"></div>
+          <div class="review-label" style="margin-bottom:8px">Description</div>
+          <div class="review-desc" id="review-desc">—</div>
+        </div>
+
+        <!-- Anonymous Notice -->
+        <div class="anon-notice">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#10b981" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          <div>
+            <strong>Completely Anonymous</strong>
+            <p>Aapka naam, ID ya koi bhi personal information store nahi ki jayegi.</p>
+          </div>
+        </div>
+
+        <div class="step-nav">
+          <button class="btn-back" id="back-3">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15 18 9 12 15 6"/></svg>
+            Edit Report
+          </button>
+          <button class="btn-submit" id="submit-btn">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+            Submit Anonymously
+          </button>
+        </div>
+      </div>
+
+      <!-- ===================== STEP 4: AI Result ===================== -->
+      <div class="form-step" id="step-4">
+        <div class="success-header">
+          <div class="success-icon">
+            <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#10b981" stroke-width="2.5"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+          </div>
+          <h2>Report Submitted Successfully!</h2>
+          <p>AI ne aapki complaint analyze kar li hai. Admin ko notify kar diya gaya hai.</p>
+        </div>
+
+        <!-- Tracking ID -->
+        <div class="tracking-box glass-card">
+          <div class="tracking-label">🔒 Your Anonymous Tracking ID</div>
+          <div class="tracking-id" id="tracking-id-display">GX-2024-XXXX</div>
+          <button class="copy-btn" id="copy-tracking-btn">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+            Copy ID
+          </button>
+          <p class="tracking-note">Ise save karo — isse aap apni complaint ka status track kar sakte ho.</p>
+        </div>
+
+        <!-- AI Analysis Result -->
+        <div class="ai-result glass-card">
+          <div class="ai-result-header">
+            <div class="ai-pulse"></div>
+            <span>AI Analysis Complete</span>
+          </div>
+
+          <div class="ai-result-grid">
+            <div class="ai-result-item">
+              <div class="ai-result-label">Category</div>
+              <div class="ai-result-value" id="result-category">—</div>
+            </div>
+            <div class="ai-result-item">
+              <div class="ai-result-label">Severity</div>
+              <div class="ai-result-value" id="result-severity">—</div>
+            </div>
+            <div class="ai-result-item">
+              <div class="ai-result-label">Sentiment</div>
+              <div class="ai-result-value" id="result-sentiment">—</div>
+            </div>
+            <div class="ai-result-item">
+              <div class="ai-result-label">Status</div>
+              <div class="ai-result-value"><span class="badge-pending">⏳ Pending Review</span></div>
+            </div>
+          </div>
+
+          <div class="ai-summary-wrap">
+            <div class="ai-summary-label">AI Summary</div>
+            <div class="ai-summary-text" id="result-summary">—</div>
+          </div>
+        </div>
+
+        <div class="result-actions">
+          <a href="index.html" class="btn-ghost">← Back to Home</a>
+          <button class="btn-hero-primary" id="new-report-btn">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+            File Another Report
+          </button>
+        </div>
+      </div>
+
+    </div><!-- /form-wrapper -->
+  </main>
+
+  <!-- ===== AI CHATBOT ===== -->
+  <div class="chatbot-container" id="chatbot-container">
+
+    <!-- Chatbot Toggle Button -->
+    <button class="chatbot-toggle" id="chatbot-toggle" aria-label="Open AI Assistant">
+      <div class="chatbot-icon-open">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+      </div>
+      <div class="chatbot-icon-close" style="display:none">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+      </div>
+      <div class="chatbot-badge">AI Help</div>
+    </button>
+
+    <!-- Chatbot Window -->
+    <div class="chatbot-window glass-card" id="chatbot-window">
+      <div class="chatbot-header">
+        <div class="chatbot-avatar">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M12 1v4M12 19v4M4.22 4.22l2.83 2.83M16.95 16.95l2.83 2.83M1 12h4M19 12h4M4.22 19.78l2.83-2.83M16.95 7.05l2.83-2.83"/></svg>
+        </div>
+        <div class="chatbot-header-info">
+          <div class="chatbot-name">Gyanix AI Assistant</div>
+          <div class="chatbot-status">
+            <span class="status-dot"></span> Online
+          </div>
+        </div>
+        <button class="chatbot-close-btn" id="chatbot-close-btn">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+        </button>
+      </div>
+
+      <div class="chatbot-messages" id="chatbot-messages">
+        <!-- Initial Bot Message -->
+        <div class="chat-msg bot">
+          <div class="chat-bubble">
+            👋 Namaste! Main Gyanix AI Assistant hoon.<br/><br/>
+            Report karne mein koi confusion hai? Pooch sakte ho — Hindi, English ya Urdu mein!
+          </div>
+          <div class="chat-time">Just now</div>
+        </div>
+
+        <!-- Quick Replies -->
+        <div class="quick-replies" id="quick-replies">
+          <button class="quick-reply-btn" data-msg="How do I file a complaint?">How to file?</button>
+          <button class="quick-reply-btn" data-msg="Is my report really anonymous?">Am I anonymous?</button>
+          <button class="quick-reply-btn" data-msg="Ragging kaise report karein?">Ragging report?</button>
+          <button class="quick-reply-btn" data-msg="What happens after I submit?">After submit?</button>
+        </div>
+      </div>
+
+      <div class="chatbot-input-wrap">
+        <input
+          type="text"
+          id="chatbot-input"
+          class="chatbot-input"
+          placeholder="Kuch bhi pooch sakte ho..."
+          maxlength="300"
+        />
+        <button class="chatbot-send" id="chatbot-send">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Loading Overlay -->
+  <div class="loading-overlay" id="loading-overlay">
+    <div class="loading-card glass-card">
+      <div class="loading-spinner"></div>
+      <div class="loading-text">AI aapki complaint analyze kar raha hai...</div>
+      <div class="loading-sub">Azure OpenAI GPT-4o processing</div>
+    </div>
+  </div>
+
+  <script src="js/config.js"></script>
+  <script src="js/report.js"></script>
+</body>
+</html>

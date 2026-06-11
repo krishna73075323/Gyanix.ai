@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Gyanix AI — Anonymous College Safety Platform</title>
+  <meta name="description" content="Gyanix AI empowers college students to anonymously report ragging, harassment, and corruption — powered by Azure OpenAI." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+  <!-- ===== PARTICLES CANVAS ===== -->
+  <canvas id="particles-canvas"></canvas>
+
+  <!-- ===== NAVBAR ===== -->
+  <nav class="navbar" id="navbar">
+    <div class="nav-container">
+      <a href="index.html" class="nav-logo">
+        <div class="logo-icon">
+          <svg width="28" height="28" viewBox="0 0 28 28" fill="none">
+            <circle cx="14" cy="14" r="13" stroke="url(#logoGrad)" stroke-width="2"/>
+            <path d="M8 14l4 4 8-8" stroke="url(#logoGrad)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+            <defs>
+              <linearGradient id="logoGrad" x1="0" y1="0" x2="28" y2="28" gradientUnits="userSpaceOnUse">
+                <stop stop-color="#a78bfa"/>
+                <stop offset="1" stop-color="#06b6d4"/>
+              </linearGradient>
+            </defs>
+          </svg>
+        </div>
+        <span class="logo-text">Gyanix<span class="logo-ai">AI</span></span>
+      </a>
+
+      <ul class="nav-links" id="nav-links">
+        <li><a href="#features" class="nav-link">Features</a></li>
+        <li><a href="#how-it-works" class="nav-link">How It Works</a></li>
+        <li><a href="#stats" class="nav-link">Impact</a></li>
+      </ul>
+
+      <div class="nav-actions">
+        <a href="login.html" class="btn-ghost" id="nav-dashboard">Admin Dashboard</a>
+        <a href="report.html" class="btn-primary" id="nav-report">Report Now</a>
+      </div>
+
+      <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- ===== HERO SECTION ===== -->
+  <section class="hero" id="hero">
+    <div class="hero-bg-grid"></div>
+
+    <div class="hero-orbs">
+      <div class="orb orb-1"></div>
+      <div class="orb orb-2"></div>
+      <div class="orb orb-3"></div>
+    </div>
+
+    <div class="hero-content">
+      <div class="hero-badge animate-fadein" style="animation-delay:0.1s">
+        <span class="badge-dot"></span>
+        <span>Powered by Microsoft Azure OpenAI</span>
+      </div>
+
+      <h1 class="hero-title animate-fadein" style="animation-delay:0.2s">
+        Speak Up.<br/>
+        <span class="gradient-text">Stay Safe.</span><br/>
+        Stay Anonymous.
+      </h1>
+
+      <p class="hero-subtitle animate-fadein" style="animation-delay:0.35s">
+        College me ragging, harassment aur corruption report karo — 
+        <strong>bina kisi dar ke.</strong> Our AI analyzes, prioritizes, and 
+        ensures your voice is heard while protecting your identity completely.
+      </p>
+
+      <div class="hero-cta animate-fadein" style="animation-delay:0.5s">
+        <a href="report.html" class="btn-hero-primary" id="hero-report-btn">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          File Anonymous Report
+        </a>
+        <a href="#how-it-works" class="btn-hero-secondary" id="hero-learn-btn">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polygon points="10 8 16 12 10 16 10 8"/></svg>
+          See How It Works
+        </a>
+      </div>
+
+      <div class="hero-trust animate-fadein" style="animation-delay:0.65s">
+        <div class="trust-item">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#10b981" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+          <span>100% Anonymous</span>
+        </div>
+        <div class="trust-item">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#10b981" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+          <span>AI-Powered Analysis</span>
+        </div>
+        <div class="trust-item">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#10b981" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+          <span>Multilingual Support</span>
+        </div>
+        <div class="trust-item">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#10b981" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+          <span>Fake Report Detection</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Floating UI Preview Card -->
+    <div class="hero-visual animate-fadein" style="animation-delay:0.55s">
+      <div class="preview-card glass-card">
+        <div class="preview-header">
+          <div class="preview-dot red"></div>
+          <div class="preview-dot yellow"></div>
+          <div class="preview-dot green"></div>
+          <span class="preview-title">AI Analysis Report</span>
+        </div>
+        <div class="preview-body">
+          <div class="preview-row">
+            <span class="preview-label">Category</span>
+            <span class="badge-ragging">Ragging</span>
+          </div>
+          <div class="preview-row">
+            <span class="preview-label">Severity</span>
+            <span class="badge-critical">🔴 Critical</span>
+          </div>
+          <div class="preview-row">
+            <span class="preview-label">Sentiment</span>
+            <span class="badge-fear">😨 Fear</span>
+          </div>
+          <div class="preview-divider"></div>
+          <div class="preview-summary-label">AI Summary</div>
+          <div class="preview-summary">Senior students threatening first-year students in hostel at night, causing severe psychological distress.</div>
+          <div class="preview-row mt-12">
+            <span class="preview-label">Status</span>
+            <span class="badge-pending">⏳ Pending Review</span>
+          </div>
+          <div class="preview-tracking">Tracking ID: <code>GX-2024-7742</code></div>
+        </div>
+      </div>
+      <div class="preview-glow"></div>
+    </div>
+
+    <div class="hero-scroll-hint">
+      <span>Scroll to explore</span>
+      <div class="scroll-arrow">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== STATS SECTION ===== -->
+  <section class="stats-section" id="stats">
+    <div class="container">
+      <div class="stats-grid">
+        <div class="stat-card glass-card animate-on-scroll" id="stat-1">
+          <div class="stat-icon" style="--ic:#7c3aed">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+          </div>
+          <div class="stat-number" data-target="12400">0</div>
+          <div class="stat-label">Students Protected</div>
+        </div>
+        <div class="stat-card glass-card animate-on-scroll" id="stat-2">
+          <div class="stat-icon" style="--ic:#06b6d4">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+          </div>
+          <div class="stat-number" data-target="8750">0</div>
+          <div class="stat-label">Reports Submitted</div>
+        </div>
+        <div class="stat-card glass-card animate-on-scroll" id="stat-3">
+          <div class="stat-icon" style="--ic:#10b981">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+          </div>
+          <div class="stat-number" data-target="6200">0</div>
+          <div class="stat-label">Cases Resolved</div>
+        </div>
+        <div class="stat-card glass-card animate-on-scroll" id="stat-4">
+          <div class="stat-icon" style="--ic:#f59e0b">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          </div>
+          <div class="stat-number" data-target="98">0</div>
+          <div class="stat-label">% Detection Accuracy</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== FEATURES SECTION ===== -->
+  <section class="features-section" id="features">
+    <div class="container">
+      <div class="section-header animate-on-scroll">
+        <div class="section-tag">Core Features</div>
+        <h2 class="section-title">Everything You Need to <span class="gradient-text">Report Safely</span></h2>
+        <p class="section-subtitle">Built with cutting-edge AI and Microsoft Azure to ensure every complaint is handled with intelligence and sensitivity.</p>
+      </div>
+
+      <div class="features-grid">
+        <div class="feature-card glass-card animate-on-scroll" id="feat-anonymous">
+          <div class="feature-icon-wrap" style="--fc: #7c3aed">
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+              <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+            </svg>
+          </div>
+          <h3 class="feature-title">100% Anonymous</h3>
+          <p class="feature-desc">No name, no ID, no trace. Your identity is never stored. Submit reports with complete peace of mind — we only store what's needed to investigate.</p>
+          <div class="feature-tag">Privacy First</div>
+        </div>
+
+        <div class="feature-card glass-card animate-on-scroll" id="feat-ai">
+          <div class="feature-icon-wrap" style="--fc: #06b6d4">
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+              <rect x="2" y="3" width="20" height="14" rx="2" ry="2"/>
+              <line x1="8" y1="21" x2="16" y2="21"/>
+              <line x1="12" y1="17" x2="12" y2="21"/>
+            </svg>
+          </div>
+          <h3 class="feature-title">AI-Powered Analysis</h3>
+          <p class="feature-desc">Azure OpenAI GPT-4o automatically categorizes complaints, assigns severity scores, and generates professional summaries — in seconds.</p>
+          <div class="feature-tag">Azure OpenAI</div>
+        </div>
+
+        <div class="feature-card glass-card animate-on-scroll" id="feat-fake">
+          <div class="feature-icon-wrap" style="--fc: #f59e0b">
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+              <circle cx="12" cy="12" r="10"/>
+              <line x1="12" y1="8" x2="12" y2="12"/>
+              <line x1="12" y1="16" x2="12.01" y2="16"/>
+            </svg>
+          </div>
+          <h3 class="feature-title">Fake Report Detection</h3>
+          <p class="feature-desc">AI intelligently identifies and flags false or malicious complaints, protecting innocent people while ensuring genuine cases are prioritized.</p>
+          <div class="feature-tag">Smart Filter</div>
+        </div>
+
+        <div class="feature-card glass-card animate-on-scroll" id="feat-sentiment">
+          <div class="feature-icon-wrap" style="--fc: #ec4899">
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+              <circle cx="12" cy="12" r="10"/>
+              <path d="M8 15s1.5 2 4 2 4-2 4-2"/>
+              <line x1="9" y1="9" x2="9.01" y2="9"/>
+              <line x1="15" y1="9" x2="15.01" y2="9"/>
+            </svg>
+          </div>
+          <h3 class="feature-title">Sentiment Analysis</h3>
+          <p class="feature-desc">Detects emotional tone — Angry, Fear, Threat, or Normal — allowing admins to gauge urgency and respond with appropriate sensitivity.</p>
+          <div class="feature-tag">Emotion AI</div>
+        </div>
+
+        <div class="feature-card glass-card animate-on-scroll" id="feat-multilingual">
+          <div class="feature-icon-wrap" style="--fc: #10b981">
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+              <circle cx="12" cy="12" r="10"/>
+              <line x1="2" y1="12" x2="22" y2="12"/>
+              <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
+            </svg>
+          </div>
+          <h3 class="feature-title">Multilingual Support</h3>
+          <p class="feature-desc">Report in <strong>Hindi, English, or Urdu</strong>. Azure AI Translator ensures language is never a barrier for a student seeking help.</p>
+          <div class="feature-tag">Hindi · English · Urdu</div>
+        </div>
+
+        <div class="feature-card glass-card animate-on-scroll" id="feat-dashboard">
+          <div class="feature-icon-wrap" style="--fc: #8b5cf6">
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+              <rect x="3" y="3" width="7" height="7"/>
+              <rect x="14" y="3" width="7" height="7"/>
+              <rect x="14" y="14" width="7" height="7"/>
+              <rect x="3" y="14" width="7" height="7"/>
+            </svg>
+          </div>
+          <h3 class="feature-title">Priority Dashboard</h3>
+          <p class="feature-desc">Admin gets a real-time dashboard with Pie, Bar & Line charts. Cases auto-sorted by AI priority — Critical cases always float to top.</p>
+          <div class="feature-tag">Admin Control</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== HOW IT WORKS ===== -->
+  <section class="how-section" id="how-it-works">
+    <div class="container">
+      <div class="section-header animate-on-scroll">
+        <div class="section-tag">Process</div>
+        <h2 class="section-title">How <span class="gradient-text">Gyanix AI</span> Works</h2>
+        <p class="section-subtitle">From submission to resolution — AI handles everything in the middle.</p>
+      </div>
+
+      <div class="steps-container">
+        <div class="step animate-on-scroll" id="step-1">
+          <div class="step-number">01</div>
+          <div class="step-content glass-card">
+            <div class="step-icon-wrap" style="--sc:#7c3aed">
+              <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/></svg>
+            </div>
+            <h3>Student Submits Report</h3>
+            <p>Fill a simple anonymous form — choose your language (Hindi/English/Urdu), select issue type, and describe what happened. No login required.</p>
+          </div>
+        </div>
+
+        <div class="step-connector animate-on-scroll"></div>
+
+        <div class="step animate-on-scroll" id="step-2">
+          <div class="step-number">02</div>
+          <div class="step-content glass-card">
+            <div class="step-icon-wrap" style="--sc:#06b6d4">
+              <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.07 4.93a10 10 0 0 1 1.41 12.56L19 16"/><path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12"/><path d="M12 6v6l4 2"/></svg>
+            </div>
+            <h3>Azure OpenAI Analyzes</h3>
+            <p>GPT-4o processes the complaint in milliseconds — detecting category, severity, sentiment, and potential fake flags with high accuracy.</p>
+          </div>
+        </div>
+
+        <div class="step-connector animate-on-scroll"></div>
+
+        <div class="step animate-on-scroll" id="step-3">
+          <div class="step-number">03</div>
+          <div class="step-content glass-card">
+            <div class="step-icon-wrap" style="--sc:#f59e0b">
+              <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 20V10"/><path d="M12 20V4"/><path d="M6 20v-6"/></svg>
+            </div>
+            <h3>Admin Gets Priority View</h3>
+            <p>Dashboard shows all cases sorted by AI severity. Critical cases are highlighted in red — admins can filter, review, and act immediately.</p>
+          </div>
+        </div>
+
+        <div class="step-connector animate-on-scroll"></div>
+
+        <div class="step animate-on-scroll" id="step-4">
+          <div class="step-number">04</div>
+          <div class="step-content glass-card">
+            <div class="step-icon-wrap" style="--sc:#10b981">
+              <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+            </div>
+            <h3>Case Resolved</h3>
+            <p>Admin takes action, updates case status. Student can track their report status using the unique anonymous tracking ID provided at submission.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== CTA SECTION ===== -->
+  <section class="cta-section">
+    <div class="container">
+      <div class="cta-card glass-card animate-on-scroll">
+        <div class="cta-orb-1"></div>
+        <div class="cta-orb-2"></div>
+        <div class="cta-content">
+          <h2>Ready to Make Your Campus Safer?</h2>
+          <p>Apni awaaz uthao — anonymously, safely, and with the power of AI.</p>
+          <div class="cta-actions">
+            <a href="report.html" class="btn-hero-primary" id="cta-report-btn">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+              File a Report Now
+            </a>
+            <a href="login.html" class="btn-ghost" id="cta-dashboard-btn">View Admin Dashboard →</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <a href="index.html" class="nav-logo">
+            <div class="logo-icon">
+              <svg width="24" height="24" viewBox="0 0 28 28" fill="none">
+                <circle cx="14" cy="14" r="13" stroke="url(#fLogoGrad)" stroke-width="2"/>
+                <path d="M8 14l4 4 8-8" stroke="url(#fLogoGrad)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+                <defs>
+                  <linearGradient id="fLogoGrad" x1="0" y1="0" x2="28" y2="28" gradientUnits="userSpaceOnUse">
+                    <stop stop-color="#a78bfa"/><stop offset="1" stop-color="#06b6d4"/>
+                  </linearGradient>
+                </defs>
+              </svg>
+            </div>
+            <span class="logo-text">Gyanix<span class="logo-ai">AI</span></span>
+          </a>
+          <p class="footer-desc">Anonymous college safety platform powered by Microsoft Azure OpenAI. Protecting students, one report at a time.</p>
+          <div class="footer-powered">
+            <span>Powered by</span>
+            <span class="azure-text">Microsoft Azure</span>
+          </div>
+        </div>
+
+        <div class="footer-links">
+          <div class="footer-col">
+            <h5>Platform</h5>
+            <ul>
+              <li><a href="report.html">File a Report</a></li>
+              <li><a href="dashboard.html">Admin Dashboard</a></li>
+              <li><a href="#how-it-works">How It Works</a></li>
+            </ul>
+          </div>
+          <div class="footer-col">
+            <h5>Categories</h5>
+            <ul>
+              <li><a href="report.html">Ragging</a></li>
+              <li><a href="report.html">Harassment</a></li>
+              <li><a href="report.html">Corruption</a></li>
+              <li><a href="report.html">Academic Misconduct</a></li>
+            </ul>
+          </div>
+          <div class="footer-col">
+            
+            
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>© 2024 Gyanix AI. Built for Microsoft Skill AI Fest Hackathon. All reports are anonymous and encrypted.  Made by Krishna Singh</p>
+        <div class="footer-badges">
+          <span class="footer-badge">🔒 Anonymous</span>
+          <span class="footer-badge">🤖 AI-Powered</span>
+          <span class="footer-badge">☁️ Azure Hosted</span>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/index.js"></script>
+</body>
+</html>

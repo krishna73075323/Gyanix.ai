@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Admin Dashboard — Gyanix AI</title>
+  <!-- Auth Guard: redirect to login if not logged in -->
+  <script>
+    (function() {
+      var s = sessionStorage.getItem('gyanix_admin');
+      var r = localStorage.getItem('gyanix_admin_remember');
+      if (!s && !r) {
+        window.location.replace('login.html');
+      }
+    })();
+  </script>
+  <meta name="description" content="Gyanix AI admin dashboard — monitor, prioritize and resolve campus safety reports." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/dashboard.css" />
+  <!-- Chart.js CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+</head>
+<body>
+
+  <!-- ===== SIDEBAR ===== -->
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar-logo">
+      <div class="logo-icon">
+        <svg width="26" height="26" viewBox="0 0 28 28" fill="none">
+          <circle cx="14" cy="14" r="13" stroke="url(#sbGrad)" stroke-width="2"/>
+          <path d="M8 14l4 4 8-8" stroke="url(#sbGrad)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+          <defs>
+            <linearGradient id="sbGrad" x1="0" y1="0" x2="28" y2="28" gradientUnits="userSpaceOnUse">
+              <stop stop-color="#a78bfa"/><stop offset="1" stop-color="#06b6d4"/>
+            </linearGradient>
+          </defs>
+        </svg>
+      </div>
+      <span class="logo-text">Gyanix<span class="logo-ai">AI</span></span>
+    </div>
+
+    <div class="sidebar-section-label">Main</div>
+    <nav class="sidebar-nav">
+      <a href="#" class="sidebar-link active" id="nav-overview">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
+        Overview
+      </a>
+      <a href="#" class="sidebar-link" id="nav-cases">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+        All Cases
+        <span class="sidebar-badge" id="pending-count-badge">0</span>
+      </a>
+      <a href="#" class="sidebar-link" id="nav-critical">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#f43f5e" stroke-width="2"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+        <span style="color:#f87171">Critical Cases</span>
+      </a>
+      <a href="#" class="sidebar-link" id="nav-analytics">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
+        Analytics
+      </a>
+    </nav>
+
+    <div class="sidebar-section-label">Actions</div>
+    <nav class="sidebar-nav">
+      <a href="report.html" class="sidebar-link">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+        New Report
+      </a>
+      <a href="index.html" class="sidebar-link">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+        Home
+      </a>
+    </nav>
+
+    <div class="sidebar-footer">
+      <div class="admin-avatar" id="admin-avatar-letter">A</div>
+      <div class="admin-info">
+        <div class="admin-name" id="sidebar-admin-name">Admin</div>
+        <div class="admin-role" id="sidebar-admin-role">Super Admin</div>
+      </div>
+      <button class="logout-btn" id="logout-btn" title="Logout">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></svg>
+      </button>
+    </div>
+  </aside>
+
+  <!-- ===== MAIN CONTENT ===== -->
+  <div class="dashboard-main" id="dashboard-main">
+
+    <!-- ===== TOP BAR ===== -->
+    <header class="topbar">
+      <div class="topbar-left">
+        <button class="sidebar-toggle-btn" id="sidebar-toggle">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+        </button>
+        <div class="topbar-title">
+          <h1 id="page-title">Overview</h1>
+          <span class="topbar-date" id="topbar-date"></span>
+        </div>
+      </div>
+      <div class="topbar-right">
+        <div class="search-wrap">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+          <input type="text" id="search-input" class="search-input" placeholder="Search cases..." />
+        </div>
+        <div class="topbar-notif" id="notif-btn">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg>
+          <span class="notif-badge" id="notif-badge">3</span>
+        </div>
+        <a href="report.html" class="btn-primary" style="font-size:0.82rem;padding:8px 18px">+ New Report</a>
+      </div>
+    </header>
+
+    <!-- ===== OVERVIEW SECTION ===== -->
+    <section class="dash-section" id="section-overview">
+
+      <!-- Stats Row -->
+      <div class="stats-row">
+        <div class="dash-stat-card" id="ds-total">
+          <div class="ds-icon" style="--ic:#7c3aed">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+          </div>
+          <div class="ds-data">
+            <div class="ds-number" data-count="247">0</div>
+            <div class="ds-label">Total Reports</div>
+          </div>
+          <div class="ds-trend up">↑ 12%</div>
+        </div>
+
+        <div class="dash-stat-card" id="ds-pending">
+          <div class="ds-icon" style="--ic:#f59e0b">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          </div>
+          <div class="ds-data">
+            <div class="ds-number" data-count="58">0</div>
+            <div class="ds-label">Pending</div>
+          </div>
+          <div class="ds-trend up">↑ 5%</div>
+        </div>
+
+        <div class="dash-stat-card" id="ds-resolved">
+          <div class="ds-icon" style="--ic:#10b981">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+          </div>
+          <div class="ds-data">
+            <div class="ds-number" data-count="189">0</div>
+            <div class="ds-label">Resolved</div>
+          </div>
+          <div class="ds-trend up">↑ 18%</div>
+        </div>
+
+        <div class="dash-stat-card critical-card" id="ds-critical">
+          <div class="ds-icon" style="--ic:#f43f5e">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+          </div>
+          <div class="ds-data">
+            <div class="ds-number" data-count="12">0</div>
+            <div class="ds-label">Critical — Needs Action</div>
+          </div>
+          <div class="ds-trend pulse-red">● LIVE</div>
+        </div>
+      </div>
+
+      <!-- Charts Row -->
+      <div class="charts-row">
+        <!-- Pie Chart -->
+        <div class="chart-card glass-card" id="chart-pie-card">
+          <div class="chart-card-header">
+            <div>
+              <div class="chart-title">Category Breakdown</div>
+              <div class="chart-sub">Distribution of all reports</div>
+            </div>
+            <div class="chart-legend" id="pie-legend"></div>
+          </div>
+          <div class="chart-wrap pie-wrap">
+            <canvas id="pieChart"></canvas>
+          </div>
+        </div>
+
+        <!-- Bar Chart -->
+        <div class="chart-card glass-card" id="chart-bar-card">
+          <div class="chart-card-header">
+            <div>
+              <div class="chart-title">Weekly Reports</div>
+              <div class="chart-sub">Last 7 weeks activity</div>
+            </div>
+            <select class="chart-select" id="bar-filter">
+              <option value="7">Last 7 weeks</option>
+              <option value="12">Last 12 weeks</option>
+            </select>
+          </div>
+          <div class="chart-wrap">
+            <canvas id="barChart"></canvas>
+          </div>
+        </div>
+      </div>
+
+      <!-- Line Chart -->
+      <div class="chart-card glass-card full-width-card" id="chart-line-card">
+        <div class="chart-card-header">
+          <div>
+            <div class="chart-title">30-Day Trend</div>
+            <div class="chart-sub">Daily report submissions over last month</div>
+          </div>
+          <div class="chart-tabs">
+            <button class="chart-tab active" data-period="30" id="tab-30">30 Days</button>
+            <button class="chart-tab" data-period="14" id="tab-14">14 Days</button>
+            <button class="chart-tab" data-period="7" id="tab-7">7 Days</button>
+          </div>
+        </div>
+        <div class="chart-wrap line-wrap">
+          <canvas id="lineChart"></canvas>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== CASES SECTION ===== -->
+    <section class="dash-section" id="section-cases">
+      <div class="cases-header">
+        <h2 class="section-heading">Case Priority Queue</h2>
+        <div class="cases-filters">
+          <select class="filter-select" id="filter-status">
+            <option value="all">All Status</option>
+            <option value="Pending">Pending</option>
+            <option value="In Review">In Review</option>
+            <option value="Resolved">Resolved</option>
+          </select>
+          <select class="filter-select" id="filter-severity">
+            <option value="all">All Severity</option>
+            <option value="Critical">Critical</option>
+            <option value="High">High</option>
+            <option value="Medium">Medium</option>
+            <option value="Low">Low</option>
+          </select>
+          <select class="filter-select" id="filter-category">
+            <option value="all">All Categories</option>
+            <option value="Ragging">Ragging</option>
+            <option value="Harassment">Harassment</option>
+            <option value="Corruption">Corruption</option>
+            <option value="Academic">Academic</option>
+            <option value="Discrimination">Discrimination</option>
+          </select>
+          <button class="filter-reset" id="filter-reset">Reset</button>
+        </div>
+      </div>
+
+      <!-- Cases Table -->
+      <div class="cases-table-wrap glass-card">
+        <table class="cases-table" id="cases-table">
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Category</th>
+              <th>Severity</th>
+              <th>Sentiment</th>
+              <th>Description</th>
+              <th>Date</th>
+              <th>Status</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody id="cases-tbody">
+            <!-- Populated by JS -->
+          </tbody>
+        </table>
+        <div class="table-empty" id="table-empty" style="display:none">
+          <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="var(--text-muted)" stroke-width="1.5"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+          <p>No cases match your filters</p>
+        </div>
+      </div>
+
+      <!-- Pagination -->
+      <div class="pagination" id="pagination">
+        <button class="page-btn" id="prev-page">← Prev</button>
+        <div class="page-numbers" id="page-numbers"></div>
+        <button class="page-btn" id="next-page">Next →</button>
+      </div>
+    </section>
+  </div>
+
+  <!-- ===== CASE DETAIL MODAL ===== -->
+  <div class="modal-overlay" id="modal-overlay">
+    <div class="modal glass-card" id="case-modal">
+      <div class="modal-header">
+        <div>
+          <div class="modal-tracking" id="modal-tracking">GX-2024-XXXX</div>
+          <h3 class="modal-title" id="modal-title">Case Details</h3>
+        </div>
+        <button class="modal-close" id="modal-close">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+        </button>
+      </div>
+
+      <div class="modal-badges">
+        <span id="modal-severity-badge"></span>
+        <span id="modal-sentiment-badge"></span>
+        <span id="modal-category-badge"></span>
+      </div>
+
+      <div class="modal-grid">
+        <div class="modal-field"><span class="mf-label">Date Filed</span><span class="mf-val" id="modal-date">—</span></div>
+        <div class="modal-field"><span class="mf-label">Status</span><span class="mf-val" id="modal-status">—</span></div>
+        <div class="modal-field"><span class="mf-label">Language</span><span class="mf-val" id="modal-lang">—</span></div>
+        <div class="modal-field"><span class="mf-label">Emergency</span><span class="mf-val" id="modal-urgent">—</span></div>
+      </div>
+
+      <div class="modal-ai-summary">
+        <div class="modal-summary-label">🤖 AI Summary</div>
+        <div class="modal-summary-text" id="modal-summary">—</div>
+      </div>
+
+      <div class="modal-desc-wrap">
+        <div class="modal-summary-label">📝 Full Description</div>
+        <div class="modal-desc" id="modal-desc">—</div>
+      </div>
+
+      <div class="modal-actions">
+        <button class="action-btn resolve-btn" id="modal-resolve-btn">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+          Mark Resolved
+        </button>
+        <button class="action-btn review-btn" id="modal-review-btn">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+          In Review
+        </button>
+        <button class="action-btn close-case-btn" id="modal-close-btn2">Close</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="js/config.js"></script>
+  <script src="js/dashboard.js"></script>
+</body>
+</html>

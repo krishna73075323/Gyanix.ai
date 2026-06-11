@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Admin Login — Gyanix AI</title>
+  <meta name="description" content="Secure admin login for Gyanix AI dashboard." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/login.css" />
+</head>
+<body>
+
+  <!-- Background Effects -->
+  <div class="login-bg">
+    <div class="login-orb login-orb-1"></div>
+    <div class="login-orb login-orb-2"></div>
+    <div class="login-orb login-orb-3"></div>
+    <div class="login-grid"></div>
+  </div>
+
+  <!-- Back to Home -->
+  <a href="index.html" class="back-home">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6"/></svg>
+    Back to Home
+  </a>
+
+  <!-- Login Wrapper -->
+  <div class="login-wrapper">
+
+    <!-- Left Panel — Branding -->
+    <div class="login-left">
+      <div class="login-brand">
+        <div class="brand-logo">
+          <svg width="36" height="36" viewBox="0 0 28 28" fill="none">
+            <circle cx="14" cy="14" r="13" stroke="url(#loginGrad)" stroke-width="2"/>
+            <path d="M8 14l4 4 8-8" stroke="url(#loginGrad)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+            <defs>
+              <linearGradient id="loginGrad" x1="0" y1="0" x2="28" y2="28" gradientUnits="userSpaceOnUse">
+                <stop stop-color="#a78bfa"/><stop offset="1" stop-color="#06b6d4"/>
+              </linearGradient>
+            </defs>
+          </svg>
+        </div>
+        <div class="brand-name">Gyanix<span>AI</span></div>
+      </div>
+
+      <h2 class="left-title">Admin Control Center</h2>
+      <p class="left-sub">Monitor complaints, track cases, and take action — all in one secure dashboard.</p>
+
+      <!-- Feature List -->
+      <div class="left-features">
+        <div class="lf-item">
+          <div class="lf-icon" style="--lfc:#7c3aed">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
+          </div>
+          <div>
+            <div class="lf-title">Live Dashboard</div>
+            <div class="lf-desc">Real-time case monitoring with charts</div>
+          </div>
+        </div>
+        <div class="lf-item">
+          <div class="lf-icon" style="--lfc:#06b6d4">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          </div>
+          <div>
+            <div class="lf-title">AI Priority Queue</div>
+            <div class="lf-desc">Cases sorted by AI severity score</div>
+          </div>
+        </div>
+        <div class="lf-item">
+          <div class="lf-icon" style="--lfc:#10b981">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+          </div>
+          <div>
+            <div class="lf-title">Case Resolution</div>
+            <div class="lf-desc">Review, update and resolve reports</div>
+          </div>
+        </div>
+        <div class="lf-item">
+          <div class="lf-icon" style="--lfc:#f43f5e">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg>
+          </div>
+          <div>
+            <div class="lf-title">Critical Alerts</div>
+            <div class="lf-desc">Instant notification for urgent cases</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Demo Credentials Box -->
+      <div class="demo-creds">
+        <div class="demo-label">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+          Demo Credentials (Click to Copy)
+        </div>
+        <div class="demo-row">
+          <span class="demo-key">Email</span>
+          <code class="demo-val">admin@gyanix.ai</code>
+        </div>
+        <div class="demo-row">
+          <span class="demo-key">Password</span>
+          <code class="demo-val">Admin@123</code>
+        </div>
+      </div>
+    </div>
+
+    <!-- Right Panel — Login Form -->
+    <div class="login-right">
+      <div class="login-card glass-card">
+        <div class="login-card-header">
+          <div class="lock-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="url(#lockGrad)" stroke-width="2">
+              <rect x="3" y="11" width="18" height="11" rx="2" ry="2"/>
+              <path d="M7 11V7a5 5 0 0 1 10 0v4"/>
+              <defs>
+                <linearGradient id="lockGrad" x1="0" y1="0" x2="24" y2="24" gradientUnits="userSpaceOnUse">
+                  <stop stop-color="#a78bfa"/><stop offset="1" stop-color="#06b6d4"/>
+                </linearGradient>
+              </defs>
+            </svg>
+          </div>
+          <h1 class="login-title">Admin Login</h1>
+          <p class="login-sub">Secure access to Gyanix AI control panel</p>
+        </div>
+
+        <!-- Error Alert -->
+        <div class="login-alert" id="login-alert">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+          <span id="alert-text">Invalid email or password.</span>
+        </div>
+
+        <!-- Success Alert -->
+        <div class="login-success" id="login-success">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+          <span>Login successful! Redirecting...</span>
+        </div>
+
+        <form class="login-form" id="login-form" novalidate>
+          <!-- Email -->
+          <div class="lf-group" id="group-email">
+            <label class="lf-label" for="admin-email">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+              Email Address
+            </label>
+            <div class="lf-input-wrap">
+              <input
+                type="email"
+                id="admin-email"
+                class="lf-input"
+                placeholder="admin@gyanix.ai"
+                autocomplete="email"
+                required
+              />
+            </div>
+            <span class="lf-error" id="email-error"></span>
+          </div>
+
+          <!-- Password -->
+          <div class="lf-group" id="group-password">
+            <label class="lf-label" for="admin-password">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+              Password
+            </label>
+            <div class="lf-input-wrap">
+              <input
+                type="password"
+                id="admin-password"
+                class="lf-input"
+                placeholder="Enter your password"
+                autocomplete="current-password"
+                required
+              />
+              <button type="button" class="lf-toggle-pass" id="toggle-pass" tabindex="-1">
+                <svg id="eye-open" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+                <svg id="eye-closed" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="display:none"><path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24"/><line x1="1" y1="1" x2="23" y2="23"/></svg>
+              </button>
+            </div>
+            <span class="lf-error" id="password-error"></span>
+          </div>
+
+          <!-- Remember Me -->
+          <div class="lf-remember">
+            <label class="remember-label">
+              <input type="checkbox" id="remember-me" class="remember-check" />
+              <span class="remember-custom"></span>
+              Remember me for 7 days
+            </label>
+          </div>
+
+          <!-- Submit Button -->
+          <button type="submit" class="login-btn" id="login-btn">
+            <span id="btn-text">Login to Dashboard</span>
+            <div class="btn-spinner" id="btn-spinner"></div>
+            <svg id="btn-arrow" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg>
+          </button>
+        </form>
+
+        <!-- Footer -->
+        <div class="login-card-footer">
+          <div class="security-note">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#10b981" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+            Secured by Azure Active Directory
+          </div>
+          <a href="index.html" class="footer-home-link">← Student Portal</a>
+        </div>
+      </div>
+
+      <!-- Attempt Counter -->
+      <div class="attempt-info" id="attempt-info" style="display:none">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#f59e0b" stroke-width="2"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/></svg>
+        <span id="attempt-text">2 attempts remaining before lockout</span>
+      </div>
+    </div>
+  </div>
+
+  <script src="js/config.js"></script>
+  <script src="js/login.js"></script>
+</body>
+</html>
